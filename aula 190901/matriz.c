@@ -55,13 +55,13 @@ Matriz* transposta (Matriz* mat){
 
 Matriz* multiplicacao (Matriz* mat1, Matriz* mat2){
 	Matriz *mat = inicializaMatriz(mat1->nLinhas, mat2->nColunas);
-  for (int i = 0; i < mat1->nLinhas; i++) {
-    for (int j = 0; j < mat2->nColunas; j++) {
-      for (int k = 0; k < mat2->nLinhas; k++) {
-        mat -> mat[i][j]+=mat1 -> mat[i][k] * mat2 -> mat[k][j];
-      }
-    }
-  }
+  	for (int i = 0; i < mat1->nLinhas; i++) {
+    	for (int j = 0; j < mat2->nColunas; j++) {
+      		for (int k = 0; k < mat2->nLinhas; k++) {
+				mat -> mat[i][j]+=mat1 -> mat[i][k] * mat2 -> mat[k][j];
+      		}
+    	}
+  	}
   return mat;
 }
 
