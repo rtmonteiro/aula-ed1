@@ -1,15 +1,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-typedef struct No {
-  int val;
-  struct No *prox;
-} tNo;
+typedef struct No tNo;
 
-typedef struct Lista {
-  tNo *inicio;
-  tNo *fim;
-} tLista;
+typedef struct Lista tLista;
 
 tLista *criarLista();
 

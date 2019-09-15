@@ -1,5 +1,15 @@
 #include "lista.h"
 
+struct No {
+  int val; // poderia ser de outro tipo: Alunos, Livros, float. char*, ...
+  struct No *prox; // ponteiro para o próximo elemento da lista
+};
+
+struct Lista {
+  tNo *inicio; // ponteiro para o primeiro item da lista
+  tNo *fim; // ponteiro para o último item da lista
+};
+
 tLista *criarLista() {
   tLista *L = (tLista *) calloc(1, sizeof(tLista));
   L->inicio = L->fim = NULL;
