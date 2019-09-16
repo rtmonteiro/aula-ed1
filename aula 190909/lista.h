@@ -1,20 +1,25 @@
-#include <stdlib.h>
-#include <stdio.h>
+#ifndef _LISTA_H_
+  #define _LISTA_H_
 
-typedef struct No tNo;
+  #include <stdlib.h>
+  #include <stdio.h>
+  
+  typedef struct No tNo;
+  
+  typedef struct Lista tLista;
+  
+  tLista *criarLista();
+  
+  void destroiLista(tLista **T);
+  
+  tNo *criarNo(int val);
+  
+  void insereNoInicio(tLista *L, int val);
+  
+  void insereNoFimManeiraRuim(tLista *L, int val);
+  
+  void insereNoFim(tLista *L, int val);
+  
+  void imprimeLista(tLista *L);
 
-typedef struct Lista tLista;
-
-tLista *criarLista();
-
-void destroiLista(tLista **T);
-
-tNo *criarNo(int val);
-
-void insereNoInicio(tLista *L, int val);
-
-void insereNoFimManeiraRuim(tLista *L, int val);
-
-void insereNoFim(tLista *L, int val);
-
-void imprimeLista(tLista *L);
+#endif
