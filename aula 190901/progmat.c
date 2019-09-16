@@ -34,7 +34,7 @@ int main()
 	printf ("A matriz multiplicacao eh: \n");
 	imprimeMatriz(mlt);
 
-        destroiMatriz(mat);
-        destroiMatriz(trp);
+	destroiMatriz(mat);
+	destroiMatriz(trp);
 	destroiMatriz(mlt);
 }
