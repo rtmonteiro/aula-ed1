@@ -28,28 +28,62 @@ TipoListaDpl* Insere (TipoItem* aluno, TipoListaDpl* lista){
   return nova;
 }
 
-TipoListaDpl* Retira (TipoListaDpl* lista, char* nome){
-  TipoListaDpl* p;
-  strcmp(lista->item->nome, nome);
-  if(p->prox == NULL){
-    return lista;
-  }
-  p->ant->prox = p->prox;
-  p->prox->ant = p->ant;
+// TipoListaDpl* Retira (TipoListaDpl* lista, char* nome){
+//   TipoListaDpl* p;
+//   int boolean = 0;
+//   for(p=lista; p!=NULL; p = p->prox){
+//     if(strcmp(p->item->nome, nome) == 0) {
+//       if(p->ant == NULL && p->prox != NULL) {
+//         p->prox->ant = p->ant;
+//         boolean = 1;
+//       } 
+//       else if (p->ant != NULL && p->prox == NULL){
+//         p->ant->prox = p->prox;  
+//         boolean = 1;
+//       }
+//       else if (p->ant != NULL && p->prox != NULL){
+//         p->ant->prox = p->prox;
+//         p->prox->ant = p->ant;
+//         boolean = 1;
+//       }
+//       if (boolean == 1) {
+//         free(p->item->nome);
+//         free(p->item->endereco);
+//         free(p->item);
+//         free(p);
+//       }
+//     }
+//   }
+//   return lista;
+// }
 
-  for(p=lista; p!=NULL; p = p->prox){
-    if(strcmp(p->item->nome, nome) == 0) {
-      if(p->ant == NULL && p->prox != NULL) {
+TipoListaDpl *Retira(TipoListaDpl *lista, char *nome){
+  TipoListaDpl *p;
+  int bool = 0;
+  for (p = lista; p != NULL && bool == 0; p = p->prox) {
+    if (strcmp(p->item->nome, nome) == 0) {
+      if (p->ant == NULL && p->prox != NULL) {
         p->prox->ant = p->ant;
-      } 
-      else if (p->ant != NULL && p->prox == NULL) {
-        p->ant->prox = p->prox;  
+        bool = 1;
       }
-      else {
-        p->ant != NULL && p-> prox != NULL
-      }      
+      if (p->ant != NULL && p->prox == NULL) {
+        p->ant->prox = p->prox;
+        bool = 1;
+      }
+      if (p->ant != NULL && p->prox != NULL) {
+        p->ant->prox = p->prox;
+        p->prox->ant = p->ant;
+        bool = 1;
+      }
+      if (bool == 1) {
+        free(p->item->nome);
+        free(p->item->endereco);
+        free(p->item);
+        free(p);
+      }
     }
   }
+  return lista;
 }
 
 void Imprime (TipoListaDpl* lista){
