@@ -91,12 +91,12 @@ void insereNoFim(tLista *L, int val) {
 }
 
 void imprimeLista(tLista *L){
-  printf("L->");
+  printf("L -> ");
 
   tNo *p = L->inicio;
 
   while (p != NULL) {
-    printf("%d->", p->val);
+    printf("%d -> ", p->val);
     p = p->prox;
   }
   printf("NULL\n");
