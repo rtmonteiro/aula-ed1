@@ -17,22 +17,19 @@ TipoListaDpl* Insere (TipoItem* aluno, TipoListaDpl* lista){
 
   nova = (TipoListaDpl*) malloc(sizeof(TipoListaDpl));
   nova->item = aluno;
-  nova->ant = NULL;
   nova->prox = lista;
-
+  nova->ant = NULL;
   if (lista == NULL) {
     return nova;
   }
   else {
-    nova->prox = lista;
-    nova->ant = NULL;
-    return nova;
+    lista->ant = nova;
   }
-  
-  
+  return nova;
 }
 
 TipoListaDpl* Retira (TipoListaDpl* lista, char* nome){
+  TipoListaDpl* p;
   strcmp(lista->item->nome, nome);
   if(p->prox == NULL){
     return lista;
@@ -40,6 +37,19 @@ TipoListaDpl* Retira (TipoListaDpl* lista, char* nome){
   p->ant->prox = p->prox;
   p->prox->ant = p->ant;
 
+  for(p=lista; p!=NULL; p = p->prox){
+    if(strcmp(p->item->nome, nome) == 0) {
+      if(p->ant == NULL && p->prox != NULL) {
+        p->prox->ant = p->ant;
+      } 
+      else if (p->ant != NULL && p->prox == NULL) {
+        p->ant->prox = p->prox;  
+      }
+      else {
+        p->ant != NULL && p-> prox != NULL
+      }      
+    }
+  }
 }
 
 void Imprime (TipoListaDpl* lista){
@@ -51,38 +61,29 @@ void Imprime (TipoListaDpl* lista){
     printf("%s ", p->item->endereco);
     printf("\n");
   }
-  
 }
 
-
-/*Inicializa um TipoItem aluno
-* inputs: o nome, a matricula e o endereco do aluno
-* output: um ponteiro para o tipo item criado
-* pre-condicao: nome, matricula e endereco validos
-* pos-condicao: tipo item criado, com os campos nome, matricula e endereco copiados
-*/
 TipoItem* InicializaTipoItem(char* nome, int matricula, char* endereco){
-  TipoItem* i = (TipoItem*) malloc(sizeof(TipoItem));
-  
+  TipoItem* i;
+  i = (TipoItem*) malloc(sizeof(TipoItem));
   // alocar o nome
-  i->nome = (char*)malloc((strlen(nome)+1)*(sizeof(char)));
-  strcpy(i->nome, nome);
+  i->nome = (char*) malloc((strlen(nome)+1)*(sizeof(char)));
   // alocar o endereço
-  i->endereco = (char*)malloc((strlen(endereco)+1)*(sizeof(char)));
-  strcpy(i->endereco, endereco);
-  // alocar a matrícula
-  i->mat = matricula;
+  i->endereco = (char*) malloc((strlen(endereco)+1)*(sizeof(char)));
 
+  strcpy(i->nome, nome);
+  strcpy(i->endereco, endereco);
+  i->mat = matricula;
+  
   return i;
 }
 
-
-/*Libera toda a memória alocada para a lista (lembre-se de tambem liberar a memoria para o aluno)
-* inputs: a lista duplamente encadeada de alunos
-* output: Lista vazia (NULL)
-* pre-condicao: lista não é nula
-* pos-condicao: memória alocada é liberada
-*/
 TipoListaDpl* libera (TipoListaDpl* lista){
-
+  TipoListaDpl* p;
+  for (p=0; p!=NULL; p=p->prox) {
+    free(p->item->nome);
+    free(p->item->endereco);
+    free(p->item);
+    free(p);
+  }
 }
