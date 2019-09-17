@@ -36,3 +36,16 @@ TAluno* InicializaAluno(char* nome, int matricula) {
   
   return aluno;
 }
+
+void Insere(TAluno* aluno, TLista* lista) {
+  TCelula* nova = (TCelula*)malloc(sizeof(TCelula));
+  nova->item = aluno;
+  nova->prox = lista->inicio;
+  if (lista->inicio == NULL) {
+    lista->fim = nova;
+    lista->inicio = nova;
+  } else {
+    lista->inicio = nova;
+  }
+  
+}
