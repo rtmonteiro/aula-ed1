@@ -47,9 +47,9 @@ int main()
 
     // Retira pessoa1 do inicio da fila
     Pessoa* retirado = retira (f);
-    // Insere pessoa1 no final da fila
+    // Insere pess*oa1 no final da fila
     insere (retirado, f);
-    // Retira pessoa2 do inicio da fila
+    // Retira pess*oa2 do inicio da fila
     retirado = retira (f);
     // Insere pessoa2 no final da fila
     insere (retirado, f);
@@ -96,5 +96,6 @@ int main()
 
     //libera a memória ocupada pela fila 
     f = destroi_fila(f);
-
+    f_maiores = destroi_fila(f);
+    f_menores = destroi_fila(f);
 }

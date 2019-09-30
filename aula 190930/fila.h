@@ -45,7 +45,7 @@ void imprime_fila (Fila* f);
 * pre-condicao: fila não é nula
 * pos-condicao: nenhuma
 */
-int Vazia_fila (Fila* f);
+int vazia_fila (Fila* f);
 
 
 /*Separa a fila f de tal forma que as pessoas com idade maior que 60 sejam movidas para a fila "f_maiores" e as pessoas com idade menor que 60 para a fila "f_menores".
